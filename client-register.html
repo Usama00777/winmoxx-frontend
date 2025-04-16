@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Register - WinMoxx</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-xl rounded-2xl w-full max-w-md p-8">
+    <h1 class="text-2xl font-bold text-center mb-6">Client Registration</h1>
+    <form class="space-y-4" onsubmit="registerClient(event)">
+      <input id="name" type="text" placeholder="Full Name" required class="w-full px-4 py-2 border rounded-lg" />
+      <input id="email" type="email" placeholder="Email" required class="w-full px-4 py-2 border rounded-lg" />
+      <input id="password" type="password" placeholder="Password" required class="w-full px-4 py-2 border rounded-lg" />
+      <input id="confirm" type="password" placeholder="Confirm Password" required class="w-full px-4 py-2 border rounded-lg" />
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Register</button>
+    </form>
+    <p id="message" class="text-sm text-center text-red-600 mt-4"></p>
+  </div>
+
+  <script>
+    async function registerClient(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+      const msg = document.getElementById('message');
+
+      if (password !== confirm) {
+        msg.textContent = 'Passwords do not match';
+        return;
+      }
+
+      const res = await fetch('https://winmoxx-backend.onrender.com/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        msg.style.color = 'green';
+        msg.textContent = 'Registered successfully! Please login.';
+      } else {
+        msg.textContent = result.message || 'Registration failed.';
+      }
+    }
+  </script>
+</body>
+</html>
