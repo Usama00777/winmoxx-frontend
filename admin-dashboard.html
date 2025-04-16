@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - WinMoxx</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4">
+  <h1 class="text-3xl font-bold mb-6 text-center">Admin Dashboard</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white p-4 rounded-xl shadow-md text-center">
+      <h2 class="text-sm text-gray-500">Total Clients</h2>
+      <p class="text-2xl font-bold">128</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow-md text-center">
+      <h2 class="text-sm text-gray-500">Total Transactions</h2>
+      <p class="text-2xl font-bold">1,493</p>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow-md text-center">
+      <h2 class="text-sm text-gray-500">Pending Approvals</h2>
+      <p class="text-2xl font-bold">6</p>
+    </div>
+  </div>
+
+  <div class="mb-4 flex justify-between items-center">
+    <h2 class="text-xl font-semibold">Transaction Logs</h2>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Upload CSV</button>
+  </div>
+
+  <div class="overflow-auto">
+    <table class="w-full bg-white rounded-xl shadow-md">
+      <thead>
+        <tr class="bg-gray-200 text-left">
+          <th class="px-4 py-2">Txn ID</th>
+          <th class="px-4 py-2">Client</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">Date</th>
+          <th class="px-4 py-2">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="px-4 py-2">TXN001</td>
+          <td class="px-4 py-2">Ali Raza</td>
+          <td class="px-4 py-2">₹8,500</td>
+          <td class="px-4 py-2">2025-04-10</td>
+          <td class="px-4 py-2 text-green-600 font-semibold">Success</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">TXN002</td>
+          <td class="px-4 py-2">Sara Khan</td>
+          <td class="px-4 py-2">₹5,000</td>
+          <td class="px-4 py-2">2025-04-11</td>
+          <td class="px-4 py-2 text-yellow-600 font-semibold">Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
